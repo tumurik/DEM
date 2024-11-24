@@ -1,6 +1,6 @@
 BEGIN;
 
-CREATE TABLE users (
+CREATE TABLE dem.users (
     user_id UUID PRIMARY KEY,
     username TEXT,
     name TEXT,
@@ -15,7 +15,7 @@ COMMIT;
 
 BEGIN;
 
-CREATE TABLE iot_devices (
+CREATE TABLE dem.iot_devices (
     device_id UUID PRIMARY KEY,
     user_id UUID,
     serial_number INT,
@@ -26,7 +26,7 @@ COMMIT;
 
 BEGIN;
 
-CREATE TABLE wallets (
+CREATE TABLE dem.wallets (
     public_key UUID PRIMARY KEY,
     user_id UUID NOT NULL,
     private_key_hash VARCHAR(255) NOT NULL,
@@ -39,7 +39,7 @@ COMMIT;
 
 BEGIN;
 
-CREATE TABLE transaction_ledger (
+CREATE TABLE dem.transaction_ledger (
     transaction_id UUID PRIMARY KEY,
     datetime TIMESTAMP,
     iot_device_id UUID,
@@ -57,7 +57,7 @@ CREATE TABLE transaction_ledger (
 
 COMMIT;
 
-INSERT INTO users (
+INSERT INTO dem.users (
     user_id, username, name, region, address, email, total_energy_produced, total_energy_consumed
 )
 VALUES
@@ -68,11 +68,11 @@ VALUES
     'North Region',
     '1234 Elm St, Springfield, IL',
     'john.doe@example.com',
-    5000000000,
-    2000000000
+    500000,
+    200000
 );
 
-INSERT INTO users (
+INSERT INTO dem.users (
     user_id, username, name, region, address, email, total_energy_produced, total_energy_consumed
 )
 VALUES
@@ -84,13 +84,13 @@ VALUES
     '1234 Elm St, Springfield, IL',
     'john.doe@example.com',
     800000,
-    10000000
+    100
 );
 
 
-INSERT INTO dem.iot_devices (device_id, user_id, serial_number)
+INSERT INTO dem.dem.iot_devices (device_id, user_id, serial_number)
 VALUES
-  ('d7b9f7c3-5fc4-4b9e-8bbf-8b43e35a7b70', 'f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 1234567890123456789);
+  ('d7b9f7c3-5fc4-4b9e-8bbf-8b43e35a7b70', 'f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 1234567);
 
 INSERT INTO dem.wallets (public_key, user_id, private_key_hash, balance, creation_date)
 VALUES
