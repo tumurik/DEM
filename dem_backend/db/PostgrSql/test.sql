@@ -28,9 +28,10 @@ COMMIT;
 BEGIN;
 
 CREATE TABLE dem.wallets (
-    public_key UUID PRIMARY KEY,
+    public_key TEXT PRIMARY KEY,
+    walletAddress TEXT,
     user_id UUID NOT NULL,
-    private_key_hash VARCHAR(255) NOT NULL,
+    private_key_hash TEXT NOT NULL,
     balance NUMERIC(20, 2),
     creation_date TIMESTAMP NOT NULL,
     CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES dem.users(user_id) ON UPDATE CASCADE ON DELETE RESTRICT
@@ -44,8 +45,8 @@ CREATE TABLE dem.transaction_ledger (
     transaction_id UUID PRIMARY KEY,
     datetime TIMESTAMP,
     iot_device_id UUID,
-    from_wallet UUID,
-    to_wallet UUID,
+    from_wallet TEXT,
+    to_wallet TEXT,
     token_amount INT,
     transaction_type TEXT,
     block_number INT,
@@ -94,10 +95,10 @@ INSERT INTO dem.dem.iot_devices (device_id, user_id, serial_number)
 VALUES
   ('d7b9f7c3-5fc4-4b9e-8bbf-8b43e35a7b70', 'f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 1234567);
 
-INSERT INTO dem.wallets (public_key, user_id, private_key_hash, balance, creation_date)
+INSERT INTO dem.wallets (public_key, walletAddress, user_id, private_key_hash, balance, creation_date)
 VALUES
-  ('f4b9b5b1-3cbe-4876-b7d3-cf9e5c7d2db2', 'f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 'abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890', 1000.50, '2024-11-24 12:30:00'),
-  ('f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 'f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 'abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567891', 500.00, '2024-11-24 12:45:00');
+  ('f4b9b5b1-3cbe-4876-b7d3-cf9e5c7d2db2', '0xb996e5d6fb01a693ba3817b2f55e210603a0', 'f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 'abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890', 1000.50, '2024-11-24 12:30:00'),
+  ('f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', '0xb996e5d6fb01a693ba3817b2f55e21060123','f4a70ac9-8a2f-46b2-b287-6e72fa21a2e9', 'abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567891', 500.00, '2024-11-24 12:45:00');
 
 INSERT INTO dem.transaction_ledger (
     transaction_id,

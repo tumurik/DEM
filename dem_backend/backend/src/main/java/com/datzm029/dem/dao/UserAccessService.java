@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository("postgres_user")
-public class UserAccessService  implements Dao<User>{
+public class UserAccessService implements Dao<User>{
 
     private final JdbcTemplate jdbcTemplate;
 
