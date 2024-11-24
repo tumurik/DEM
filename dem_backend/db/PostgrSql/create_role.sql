@@ -1,13 +1,19 @@
 -- Role: dem
 -- DROP ROLE dem;
+--right click on database open query tool
+CREATE USER dem WITH PASSWORD '123';
+CREATE DATABASE dem
+    WITH
+    OWNER = dem
+    ENCODING = 'UTF8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+--open dem database
+CREATE SCHEMA dem AUTHORIZATION dem;
 
-CREATE ROLE dem WITH
-    LOGIN
-    SUPERUSER
-    INHERIT
-    CREATEDB
-    CREATEROLE
-    REPLICATION
-    ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:C2wng2BEyb45k4BEnHV2Qg==$VG8J9N8DFJZZnmAs1zdTlAa3cHgfcqyOou1xQd/pTPY=:tY0w+d00pwbYOdB1fBFD37M4PpnHMVgCxoMHiqIsq5E=';
 
-COMMENT ON ROLE oop IS 'Delivery Energy Marketplace';
+COMMENT ON DATABASE dem
+    IS 'Database for Delivery Energy Marketplace';
+
+GRANT ALL PRIVILEGES ON DATABASE dem TO dem;
+ALTER USER dem CREATEDB;
