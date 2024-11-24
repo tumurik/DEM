@@ -22,5 +22,4 @@ public class TransactionLedger {
     BigInteger blockNumber;
     String transactionHash;
     StatusType status;
-
 }
