@@ -2,6 +2,7 @@ BEGIN;
 
 CREATE TABLE wallets (
     public_key UUID PRIMARY KEY,
+    walletAddress TEXT,
     user_id UUID NOT NULL,
     private_key_hash VARCHAR(255) NOT NULL,
     balance NUMERIC(20, 2),
