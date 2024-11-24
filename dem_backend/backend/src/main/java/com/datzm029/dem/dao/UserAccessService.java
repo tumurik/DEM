@@ -3,11 +3,13 @@ package com.datzm029.dem.dao;
 import com.datzm029.dem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
+@Repository("postgres_user")
 public class UserAccessService  implements Dao<User>{
 
     private final JdbcTemplate jdbcTemplate;

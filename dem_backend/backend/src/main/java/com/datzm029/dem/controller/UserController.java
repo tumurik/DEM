@@ -10,8 +10,10 @@ import java.math.BigInteger;
 import java.util.UUID;
 
 public class UserController {
+
     @Autowired
     UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
