@@ -8,7 +8,8 @@ CREATE TABLE users (
     address TEXT,
     email TEXT,
     total_energy_produced INT,
-    total_energy_consumed INT
+    total_energy_consumed INT,
+    password TEXT
 );
 
 COMMIT;

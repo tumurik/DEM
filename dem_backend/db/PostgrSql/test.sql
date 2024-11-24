@@ -8,7 +8,8 @@ CREATE TABLE dem.users (
     address TEXT,
     email TEXT,
     total_energy_produced INT,
-    total_energy_consumed INT
+    total_energy_consumed INT,
+    password TEXT
 );
 
 COMMIT;
@@ -73,7 +74,7 @@ VALUES
 );
 
 INSERT INTO dem.users (
-    user_id, username, name, region, address, email, total_energy_produced, total_energy_consumed
+    user_id, username, name, region, address, email, total_energy_produced, total_energy_consumed, password
 )
 VALUES
 (
@@ -84,7 +85,8 @@ VALUES
     '1234 Elm St, Springfield, IL',
     'john.doe@example.com',
     800000,
-    100
+    100,
+    'asd'
 );
 
 

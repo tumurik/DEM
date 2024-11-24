@@ -19,4 +19,5 @@ public class User {
     String email;
     BigInteger totalEnergyProduced;
     BigInteger totalEnergyConsumed;
+    String password;
 }
